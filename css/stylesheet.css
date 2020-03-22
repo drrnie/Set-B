@@ -1,0 +1,35 @@
+
+body{
+        background: linear-gradient(to right bottom, rgba(0, 0, 0, 0.774), rgba(136, 136, 136, 0.63)), url(../img/bg-img.png);
+        overflow: hidden;
+        font-family: 'Karla', sans-serif;
+}
+
+#title{
+    width: 600px;
+    height: 700px;
+}
+#hello{
+    color: #2fc0e4;
+    width: 400px;
+    border-radius: 50px;
+    background: #e0e5ec;
+    box-shadow:  -5px 5px 8px #5a5c5e, 
+                 5px -5px 8px #ffffff;
+}
+
+.enterbtn{
+    border: none;
+    border-radius: 36px;
+background: #2fc0e4;
+box-shadow: inset 5px 5px 9px #2aadcd, 
+            inset -5px -5px 9px #34d3fb;
+}
+
+.enterbtn:hover{
+    border: 2px solid black;
+    border-radius: 36px;
+background: #27a7c7;
+box-shadow: inset 5px 5px 9px #2396b3, 
+            inset -5px -5px 9px #2bb8db;
+}

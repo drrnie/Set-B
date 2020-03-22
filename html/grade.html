@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Grade Evaluator</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Karla&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/stylesheet-grades.css">
+</head>
+<body onload="getName(), changeText(), playMusic()">
+    <audio src="../audio/Graduation.mp3" type="audio/mpeg" id="gradSong"></audio>
+    <audio src="../audio/Sound of Silence.mp3" type="audio/mpeg" id="silence"></audio>
+    <audio src="../audio/Never Gonna Give You Up.mp3" type="audio/mpeg" id="rickroll"></audio>
+    <!--grade evaluator-->
+    <div class="container-fluid mx-auto d-block table p-4">
+        <h4 class="h2 pb-3 font-weight-bold text-center" id="evaluator">Student Grade Evaluator</h4>
+        <div class="row">
+            <div class="col-4 mr-1" id="titlename"><h5 class="h5">Student Name:</h5></div>
+            <div class="col pl-2"><h5 class="h5 font-weight-bold" id="stdname"></h5></div>
+        </div>
+        <hr>
+        <h5 class="h5 pb-2">List of Subjects:</h5>
+        <div class="row text-center pb-2">
+            <div class="col">
+                <h6 class="h6 smol font-weight-bold" id="hgrey">Subject Title</h6>
+            </div>
+            <div class="col">
+                <h6 class="h6 smol font-weight-bold"id="hgrey">Grade</h6>
+            </div>
+            <div class="col">
+                <h6 class="h6 smol font-weight-bold"id="hgrey">Remarks</h6>
+            </div>
+        </div>
+        <div class="row text-center pb-2">
+            <div class="col"><h6 class="h6">Math</h6></div>
+            <div class="col"><input type="text" name="" id="inputmath" class="input"></div>
+            <div class="col"><h6 class="h6" id="evalmath">Evaluation</h6></div>
+        </div>
+        <div class="row text-center pb-2">
+            <div class="col"><h6 class="h6">Science</h6></div>
+            <div class="col"><input type="text" name="" id="inputsci" class="input"></div>
+            <div class="col"><h6 class="h6" id="evalsci">Evaluation</h6></div>
+        </div>
+        <div class="row text-center pb-2">
+            <div class="col"><h6 class="h6">English</h6></div>
+            <div class="col"><input type="text" name="" id="inputeng" class="input"></div>
+            <div class="col"><h6 class="h6" id="evaleng">Evaluation</h6></div>
+        </div>
+        <div class="row text-center pb-2">
+            <div class="col"><h6 class="h6">Filipino</h6></div>
+            <div class="col"><input type="text" name="" id="inputfil" class="input"></div>
+            <div class="col"><h6 class="h6" id="evalfil">Evaluation</h6></div>
+        </div>
+        <div class="row text-center pb-2">
+            <div class="col"><h6 class="h6">P.E.</h6></div>
+            <div class="col"><input type="text" name="" id="inputpe" class="input"></div>
+            <div class="col"><h6 class="h6" id="evalpe">Evaluation</h6></div>
+        </div>
+        <div class="row text-center">
+            <div class="col">
+                <h5 class="h5 text-left">Student Rank:</h5>
+            </div>
+            <div class="col">
+                <h5 class="h5" id="evalave">Rank Here</h5>
+            </div>
+        </div>
+        <div class="row pt-2 text-center">
+            <div class="col">
+                <button class="btn btn-primary" id="calculate" onclick="showGrade()">Calculate</button>
+            </div>
+            <div class="col">
+                <button class="btn btn-primary reset" id="reset" name="reset" onclick="resetButton(), changeText()">Reset</button>
+            </div>
+        </div>
+    </div>
+<!--music player-->
+    <div class="table float-left music ml-5 p-4">
+        <div class="row text-center">
+            <div class="col">
+                <h4 class="h4 font-weight-bold" id="welcome">Welcome</h4>
+            </div>
+        </div>
+        <div class="row text-center mt-1 pb-2">
+            <div class="col mt-3">
+                <img src="../img/headphones-md.png" id="headset">
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col">
+                <h6 class="h6 font-weight-bold" id="playlist_status"></h6>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col">
+                <input type="range" id="toseek" min="0" max="100" value="0" step="1">
+                <span id="current" class="small">0:00</span>/<span id="during" class="small">0:00</span>
+            </div>
+        </div>
+        <div class="row text-center px-2 py-3">
+            <div class="col">
+                <button class="btn pausenplay" onclick="playPause()" id="play"><img src="../img/play.png" class="p-2" id="playimg"></button>
+            </div>
+            <div class="col">
+                <button class="btn pausenplay stop" onclick="stopMusic(), stopmusicPost()" id="stop"><img src="../img/stop.png" class="p-2" id="stopimg"></button>
+            </div>
+            <hr>
+        </div>
+        <div class="row mx-4 py-2">
+            <div class="col-2">
+                <img src="../img/volume.png" class="pr-5">
+            </div>
+            <div class="col-2 p-0">
+                <input class="ml-0" type="range" id="volume" min="0" max="100" value="50" step="1">
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col">
+                <h6 class="h5 font-weight-bold" id="musictext"></h5>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid float-right table p-4 postpic align-middle mt-5" id="postpic">
+            <div class="row text-center">
+                <div class="col">
+                    <img src="../img/grad.png" alt="" id="grad">
+                </div>
+            </div>
+            <div class="row text-center pt-5">
+                <div class="col"><h5 class="h5 font-weight-bold" id="postpictitle">Congratulations!</h5></div>
+            </div>
+            <div class="row text-center">
+                <h5 class="h5 font-weight-bold" id="postpicmsg">Looks like you're well on your way to that elusive diploma.</h5>
+            </div>
+    </div>
+<!--scripts-->
+    <script src="../js/jquery-3.3.1.slim.min.js"></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/main.js"></script>
+    
+</body>
+</html>
